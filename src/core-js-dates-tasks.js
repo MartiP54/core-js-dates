@@ -296,7 +296,8 @@ function getWorkSchedule(/* period, countWorkDays, countOffDays */) {
  * Date(2020, 2, 1) => true
  */
 function isLeapYear(date) {
-  return date.getDate() === 29;
+  const temp = new Date(date.getUTCFullYear(), date.getUTCMonth() + 1, 0);
+  return temp.getDate() === 29;
 }
 
 module.exports = {
