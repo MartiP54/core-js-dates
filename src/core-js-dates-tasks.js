@@ -252,8 +252,13 @@ function getNextFridayThe13th(date) {
  * Date(2024, 10, 10) => 4
  */
 function getQuarter(date) {
-  const dateTemp = new Date(date);
-  return Math.ceil(dateTemp.getMonth() / 3);
+  let result = 0;
+  if (Math.ceil(date.getMonth() / 3) === 0) {
+    result = 1;
+  } else {
+    result = Math.ceil(date.getMonth() / 3);
+  }
+  return result;
 }
 
 /**
