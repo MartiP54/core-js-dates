@@ -230,7 +230,7 @@ function getNextFridayThe13th(date) {
         dateResult.setUTCFullYear(
           dateTemp3.getUTCFullYear(),
           dateTemp3.getUTCMonth(),
-          dateTemp3.getUTCDate() - 1
+          dateTemp3.getUTCDate()
         );
         dateResult.setUTCHours(17, 0, 0, 0);
         m = 12;
