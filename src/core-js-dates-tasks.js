@@ -192,7 +192,7 @@ function getCountWeekendsInMonth(month, year) {
 function getWeekNumberByDate(date) {
   const dateTemp = new Date(date);
   const day = dateTemp.getUTCDate();
-  dateTemp.setUTCDate(day + 1);
+  dateTemp.setUTCDate(day);
   const dateTempSec = Date.parse(dateTemp);
   const firstDayTemp = new Date(date);
   firstDayTemp.setUTCMonth(0, 1);
