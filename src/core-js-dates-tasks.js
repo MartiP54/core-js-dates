@@ -279,6 +279,7 @@ function getQuarter(date) {
  * { start: '01-01-2024', end: '15-01-2024' }, 1, 3 => ['01-01-2024', '05-01-2024', '09-01-2024', '13-01-2024']
  * { start: '01-01-2024', end: '10-01-2024' }, 1, 1 => ['01-01-2024', '03-01-2024', '05-01-2024', '07-01-2024', '09-01-2024']
  */
+
 function getWorkSchedule(period, countWorkDays, countOffDays) {
   const workDay = [];
   const periodStart = new Date(period.end);
@@ -296,12 +297,17 @@ function getWorkSchedule(period, countWorkDays, countOffDays) {
   periodStart.setUTCHours(0, 0, 0, 0);
   periodEnd.setUTCHours(0, 0, 0, 0);
   const tempDate = new Date(periodStart);
+  tempDate.setUTCDate(tempDate.getUTCDate() - 1);
   while (tempDate < periodEnd) {
     for (let i = 0; i < countWorkDays; i += 1) {
       tempDate.setUTCDate(tempDate.getUTCDate() + 1);
-      workDay.push(
-        new Date(tempDate).toLocaleDateString('en-GB').replace(/\//g, '-')
-      );
+      if (tempDate <= periodEnd) {
+        workDay.push(
+          new Date(tempDate)
+            .toLocaleDateString('en-GB', { timeZone: 'UTC' })
+            .replace(/\//g, '-')
+        );
+      }
     }
     tempDate.setUTCDate(tempDate.getUTCDate() + countOffDays);
   }
