@@ -226,13 +226,12 @@ function getNextFridayThe13th(date) {
       const dateTemp3 = new Date(date);
       dateTemp3.setUTCFullYear(date.getFullYear(), m, i);
       if (dateTemp3.getUTCDay() === 5 && dateTemp3.getUTCDate() === 13) {
-        dateResult = new Date();
+        dateResult = new Date(date);
         dateResult.setUTCFullYear(
           dateTemp3.getUTCFullYear(),
           dateTemp3.getUTCMonth(),
           dateTemp3.getUTCDate()
         );
-        dateResult.setUTCHours(17, 0, 0, 0);
         m = 12;
         i = 40;
       }
